@@ -3,25 +3,30 @@
     [
       {
         "type": "web",
+        "title": "Web Core",
         "link": "",
         "disable": true
       },
       {
         "type": "html",
+        "title": "HTML / HTML5",
         "link": "",
         "disable": true
       },
       {
         "type": "css",
+        "title": "CSS / CSS3",
         "link": "",
         "disable": true
       },
       {
         "type": "javascript",
+        "title": "JavaScript",
         "link": "https://raw.githubusercontent.com/dmaximyuk/interview-frontend-questions/refs/heads/main/questions/javascript.json"
       },
       {
         "type": "typescript",
+        "title": "TypeScript",
         "link": "",
         "disable": true
       }

@@ -3,9 +3,7 @@ import "./styles/main.sass";
 
 import { render } from "solid-js/web";
 import { i18n } from "@/shared/lib";
-import { retrieveRawInitData, postEvent } from "@telegram-apps/bridge";
-
-import { tgGenerateSign } from "@/shared/lib";
+import { postEvent } from "@telegram-apps/bridge";
 
 import App from "./App";
 
@@ -18,14 +16,12 @@ if (import.meta.env.DEV && !(root instanceof HTMLElement)) {
 }
 
 /* init data */
-postEvent("iframe_ready", {
-  reload_supported: true,
-});
-
-/* get start params */
-const preparedAuthData = tgGenerateSign(retrieveRawInitData());
-if (preparedAuthData) {
-  // console.log(preparedAuthData);
+try {
+  postEvent("iframe_ready", {
+    reload_supported: true,
+  });
+} catch {
+  /* empty */
 }
 
 i18n.parseLocale();

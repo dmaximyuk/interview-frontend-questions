@@ -22,6 +22,6 @@ export const api = ky.create({
       // },
     ],
   },
-  prefixUrl: import.meta.env.VITE_API_URL || API_URL,
+  prefixUrl: (import.meta.env.VITE_API_URL || API_URL) as string,
   headers,
 });

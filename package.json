@@ -89,7 +89,9 @@
   "dependencies": {
     "@solid-primitives/i18n": "^2.2.1",
     "@solidjs/router": "^0.15.3",
+    "@tabler/icons-solidjs": "^3.34.1",
     "@telegram-apps/bridge": "^2.10.3",
+    "@tma-solidjs/ui": "^0.0.13",
     "ky": "^1.8.2",
     "solid-js": "^1.9.8"
   }

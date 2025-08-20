@@ -14,8 +14,8 @@ export const tgGenerateSign = (
       .map(([k, v]) => `${k}=${v}`)
       .join("\n"),
     u: {
+      user: JSON.parse(params.get("user") || "") as string,
       auth_date: +(params.get("auth_date") || ""),
-      user: JSON.parse(params.get("user") || ""),
       query_id: params.get("query_id") || "",
     },
     h: params.get("hash") || "",

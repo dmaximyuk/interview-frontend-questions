@@ -1,71 +1,57 @@
-import { type Component, type JSX, For } from "solid-js";
-
-import { Panel, Cell } from "@tma-solidjs/ui";
-
 import {
-  IconBrandJavascript,
-  IconBrandTypescript,
-  IconChevronRight,
-  IconBrandHtml5,
-  IconBrandCss3,
-  IconWorldWww,
-} from "@tabler/icons-solidjs";
+  type Component,
+  type JSX,
+  For,
+  createSignal,
+  createMemo,
+  Show,
+} from "solid-js";
 
-interface HomeProps extends JSX.HTMLAttributes<HTMLElement> {}
+import { Panel, Title, Text, Cell } from "@tma-solidjs/ui";
 
-const elements = [
-  {
-    description: "42 questions",
-    before: IconWorldWww,
-    title: "Web Core",
-  },
-  {
-    description: "42 questions",
-    before: IconBrandHtml5,
-    title: "HTML5",
-  },
-  {
-    description: "42 questions",
-    before: IconBrandCss3,
-    title: "CSS3",
-  },
-  {
-    description: "42 questions",
-    before: IconBrandJavascript,
-    title: "JavaScript",
-  },
-  {
-    description: "42 questions",
-    before: IconBrandTypescript,
-    title: "TypeScript",
-  },
-];
+interface QuizItem {
+  id: string;
+  title: string;
+  image?: string;
+  explanation?: string;
+  answers: {
+    id: string;
+    text: string;
+    correct?: boolean;
+  }[];
+}
 
-const Quizlet: Component<HomeProps> = () => {
+interface QuizProps extends JSX.HTMLAttributes<HTMLElement> {}
+
+const Quiz: Component<QuizProps> = (props) => {
+  const [index, setIndex] = createSignal<number>(0);
+  const [questions] = createSignal<QuizItem[]>(
+    (() => {
+      return [];
+    })(),
+  );
+
+  const question = createMemo(() => questions()[index()]);
+
   return (
     <Panel>
-      <For each={elements}>
-        {(el) => {
-          const Icon = el.before;
-
-          return (
-            <Cell
-              after={
-                <IconChevronRight
-                  color={"var(--accent_text_color)"}
-                  size={18}
-                />
-              }
-              before={<Icon color={"var(--accent_text_color)"} size={32} />}
-              description={el.description}
-            >
-              {el.title}
-            </Cell>
-          );
-        }}
-      </For>
+      <Show when={question()}>
+        {(q) => (
+          <>
+            <Text>
+              {index()} / {questions().length}
+            </Text>
+            <Title>{q().title}</Title>
+            <For each={q().answers}>
+              {(a, i) => {
+                return <Cell after={`${i() + 1}`}>{a.text}</Cell>;
+              }}
+            </For>
+          </>
+        )}
+      </Show>
     </Panel>
   );
 };
 
-export default Quizlet;
+export default Quiz;

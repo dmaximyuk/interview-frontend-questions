@@ -1,24 +1,30 @@
 {
   "questions": [
-    {
-      "type": "web",
-      "link": ""
-    },
-    {
-      "type": "html",
-      "link": ""
-    },
-    {
-      "type": "css",
-      "link": ""
-    },
-    {
-      "type": "javascript",
-      "link": ""
-    },
-    {
-      "type": "typescript",
-      "link": ""
-    }
+    [
+      {
+        "type": "web",
+        "link": "",
+        "disable": true
+      },
+      {
+        "type": "html",
+        "link": "",
+        "disable": true
+      },
+      {
+        "type": "css",
+        "link": "",
+        "disable": true
+      },
+      {
+        "type": "javascript",
+        "link": "https://raw.githubusercontent.com/dmaximyuk/interview-frontend-questions/refs/heads/main/questions/javascript.json"
+      },
+      {
+        "type": "typescript",
+        "link": "",
+        "disable": true
+      }
+    ]
   ]
 }
